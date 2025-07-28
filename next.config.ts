@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
         port: '1338',
         pathname: '/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'unwavering-bell-bc11c8ceb9.media.strapiapp.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

@@ -270,6 +270,7 @@ function MemoryCard({
   const onMouseEnter = () => {
     pauseAutoplay();
   };
+console.log(`${memory.images[currentImageIndex]?.url}`);
 
   return (
     <div className={`bg-white rounded-lg shadow-md overflow-hidden ${!hasImages ? 'flex flex-col justify-center' : ''}`}>
@@ -285,7 +286,7 @@ function MemoryCard({
             <div className="relative h-64 md:h-96 rounded-full">
               {memory.images[currentImageIndex]?.url && (
                  <Image
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL + memory.images[currentImageIndex]?.url}`}
+                src={`${memory.images[currentImageIndex]?.url}`}
                 alt="Memory image"
                 fill
                 className="object-fill rounded-3xl transition-opacity duration-300 w-full h-full"
@@ -314,7 +315,7 @@ function MemoryCard({
       <div className={`p-4 ${!hasImages ? 'flex-1 flex flex-col justify-center items-center py-12' : ''}`}>
         {memory.wishes && (
           <p className={`italic mb-2 ${!hasImages ? 'text-center text-xl' : 'text-gray-700'}`}>
-           &quot{memory.wishes}&quot
+           "{memory.wishes}"
           </p>
         )}
         <p className={`text-sm text-gray-500 ${!hasImages ? 'text-center mt-4' : 'text-right'}`}>
