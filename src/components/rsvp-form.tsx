@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
@@ -39,14 +38,14 @@ export function RsvpForm() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit() {
     setIsSubmitting(true);
     
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       toast.success('RSVP submitted successfully!');
       form.reset();
-    } catch (error) {
+    } catch (_) {
       toast.error('Failed to submit RSVP. Please try again.');
     } finally {
       setIsSubmitting(false);

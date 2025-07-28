@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 
-import { fetchAPI, getStrapiMedia } from '@/lib/strapi';
+import { fetchAPI} from '@/lib/strapi';
 import { Skeleton } from './ui/skeleton';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -39,7 +39,7 @@ export default function MemoriesGallery() {
         });
 
         if (response && response.data && Array.isArray(response.data)) {
-          const validMemories = response.data.filter((memory: any) => 
+          const validMemories = response.data.filter((memory: Memory) => 
             memory && memory.createdAt
           );
       
@@ -314,7 +314,7 @@ function MemoryCard({
       <div className={`p-4 ${!hasImages ? 'flex-1 flex flex-col justify-center items-center py-12' : ''}`}>
         {memory.wishes && (
           <p className={`italic mb-2 ${!hasImages ? 'text-center text-xl' : 'text-gray-700'}`}>
-            "{memory.wishes}"
+           &quot{memory.wishes}&quot
           </p>
         )}
         <p className={`text-sm text-gray-500 ${!hasImages ? 'text-center mt-4' : 'text-right'}`}>
