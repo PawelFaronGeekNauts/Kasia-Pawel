@@ -23,7 +23,7 @@ export default function UploadPage() {
           Add your photos and wishes from our special day
         </p>
       </div>
-
+    
       {isAccessible ? (
         <div className="flex flex-col gap-8">
         
@@ -35,8 +35,13 @@ export default function UploadPage() {
           </div>
         </div>
       ) : (
-        <div className="text-center text-lg text-gray-600 bg-yellow-100 border border-yellow-300 p-6 rounded-lg shadow-md max-w-xl mx-auto">
-          Możliwość dodawania zdjęć zostanie odblokowana w dniu ślubu – 17 lipca 2026.
+        <div className="flex flex-col gap-4 max-w-xl mx-auto">
+          <div className="text-center text-lg text-gray-600 bg-yellow-100 border border-yellow-300 p-6 rounded-lg shadow-md">
+            Możliwość dodawania zdjęć zostanie odblokowana w dniu ślubu – 17 lipca 2026.
+          </div>
+          <div className="text-center text-lg text-gray-600 bg-yellow-100 border border-yellow-300 p-6 rounded-lg shadow-md">
+            Photo upload feature will be unlocked on our wedding day - July 17, 2026.
+          </div>
         </div>
       )}
     </div>
