@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function UploadPage() {
   const now = new Date();
-  const releaseDate = new Date('2025-05-02T00:00:00+02:00'); 
+  const releaseDate = new Date('2026-07-16T00:00:00+02:00'); 
 
   const isAccessible = now >= releaseDate;
 
