@@ -22,7 +22,6 @@ interface StrapiFile {
   [key: string]: any;
 }
 
-// Maksymalny rozmiar pliku w bajtach (3MB)
 const MAX_FILE_SIZE = 3 * 1024 * 1024;
 
 export default function ImageUploader() {
@@ -33,15 +32,11 @@ export default function ImageUploader() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [fileErrors, setFileErrors] = useState<string[]>([]);
-
-  // Funkcja do weryfikacji pliku
   const validateFile = (file: File): string | null => {
-    // Sprawdź rozmiar pliku
     if (file.size > MAX_FILE_SIZE) {
       return `Plik ${file.name} jest zbyt duży. Maksymalny rozmiar to 3MB.`;
     }
 
-    // Sprawdź typ pliku
     const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
     if (!validTypes.includes(file.type)) {
       return `Plik ${file.name} ma nieprawidłowy format. Dozwolone formaty to: JPG, PNG, GIF, WebP.`;
@@ -57,18 +52,15 @@ export default function ImageUploader() {
     const errors: string[] = [];
     const validFiles: File[] = [];
     
-    // Sprawdź każdy plik
     selectedFiles.forEach(file => {
       const error = validateFile(file);
       if (error) {
         errors.push(error);
       } else {
-        // Dodaj tylko prawidłowe pliki
         validFiles.push(file);
       }
     });
-    
-    // Pokaż błędy jeśli istnieją
+
     if (errors.length > 0) {
       setFileErrors(errors);
       errors.forEach(error => toast.error(error));
@@ -87,7 +79,7 @@ export default function ImageUploader() {
     });
   
     setPreviews(prevPreviews => {
-      const currentFiles = files; // use latest state
+      const currentFiles = files; 
       const uniqueNewPreviews = validFiles
         .filter(newFile => {
           return !currentFiles.some(existingFile =>
@@ -104,13 +96,10 @@ export default function ImageUploader() {
     const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337';
     const formData = new FormData();
     
-    // Dodaj każdy plik do formData z poprawną nazwą
     files.forEach((file, index) => {
-      // Dodaj unikalne znaczniki czasowe do nazwy plików, aby uniknąć konfliktów
       const timestamp = new Date().getTime();
       const cleanFileName = file.name.replace(/[^a-zA-Z0-9.]/g, '_');
       
-      // Użyj "image" jako nazwy pola, a nie "files"
       formData.append('files', file, `${timestamp}_${cleanFileName}`);
     });
 
@@ -154,14 +143,12 @@ export default function ImageUploader() {
     setUploadProgress(0);
 
     try {
-      // Use axios to upload the files with progress tracking
       const uploadedFiles = await uploadFilesWithAxios(files) as StrapiFile[];
       const uploadedIds = uploadedFiles.map(file => file.id);
       
       console.log('Uploaded files:', uploadedFiles);
       console.log('File IDs:', uploadedIds);
 
-      // Próba bezpośredniego wysłania żądania do Strapi z Axios zamiast fetchAPI
       const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337';
       
       const payload = {
@@ -174,7 +161,6 @@ export default function ImageUploader() {
       console.log('Payload for memory creation:', payload);
       
       try {
-        // Używamy axios dla lepszej diagnostyki błędów
         const memoryResponse = await axios.post(
           `${API_URL}/api/memories`, 
           payload,
@@ -196,12 +182,10 @@ export default function ImageUploader() {
           message: axiosError.message
         });
         
-        // Sprawdzamy szczegóły błędu
         if (axiosError.response?.data?.error?.message) {
           console.error('Strapi error message:', axiosError.response.data.error.message);
         }
         
-        // Próba z inną nazwą pola
         try {
           const alternativePayload = {
             data: {
@@ -233,7 +217,6 @@ export default function ImageUploader() {
             message: altError.message
           });
           
-          // Ostatnia próba - właściwe pole może być inne lub problem jest głębszy
           toast.error('Failed to save memory. See console for details.');
         }
       }
@@ -263,11 +246,10 @@ export default function ImageUploader() {
     setFiles(newFiles);
 
     const newPreviews = [...previews];
-    URL.revokeObjectURL(newPreviews[index]); // Clean up the preview URL
+    URL.revokeObjectURL(newPreviews[index]); 
     newPreviews.splice(index, 1);
     setPreviews(newPreviews);
     
-    // Usuń również błędy związane z tym plikiem
     if (fileErrors.length > index) {
       const newErrors = [...fileErrors];
       newErrors.splice(index, 1);

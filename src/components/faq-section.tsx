@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useFAQ } from '@/hooks/use-faq';
 
 interface FAQSectionProps {
   title: string;
@@ -9,15 +8,25 @@ interface FAQSectionProps {
   introduction: string;
 }
 
+const FAQ_DATA = [
+  {
+    question: "Gdzie będę spać po tym jak przetańczę całą noc? ",
+    answer: "Na miejscu dostępne są przytulne pokoje, więc nie musicie się martwić o powrót do domu. W opcji rezerwacji dostępne jest również dla Was śniadanie. \n Aby z takiej możliwości skorzystać zadzwoń pod numer telefonu 795 000 054 i zarezerwuj dla siebie pokój "
+  },
+  {
+    question: "Drogie panie co z butami? ",
+    answer: "Wiemy że szpilki to must have każdej eleganckiej stylizacji. ALE nasza lokalizacja ślubna jest otoczona pięknymi terenami zielonymi.\nDlatego gorąco zachęcamy do zabrania wygodnych butów na zmianę. W końcu wygoda to podstawa dobrej zabawy!"
+  }
+]
+
 export function FAQSection({ title, subtitle, introduction }: FAQSectionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const { data, isLoading, error } = useFAQ();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const faqs = data?.data.map(item => ({
+  const faqs = FAQ_DATA.map(item => ({
     question: item.question,
     answer: item.answer
   })) || [];
@@ -36,16 +45,6 @@ export function FAQSection({ title, subtitle, introduction }: FAQSectionProps) {
             {introduction}
           </p>
         </div>
-
-        {isLoading ? (
-          <div className="text-center py-12">
-            <p className="font-quicksand text-lg text-gray-700">Ładowanie pytań...</p>
-          </div>
-        ) : error ? (
-          <div className="text-center py-12">
-            <p className="font-quicksand text-lg text-gray-700">Nie udało się załadować pytań. Spróbuj ponownie później.</p>
-          </div>
-        ) : (
           <div className="rounded-md divide-y divide-[#36363633]">
             {faqs.map((faq, index) => (
               <div key={index} className="overflow-hidden">
@@ -84,7 +83,6 @@ export function FAQSection({ title, subtitle, introduction }: FAQSectionProps) {
               </div>
             ))}
           </div>
-        )}
       </div>
     </div>
   );

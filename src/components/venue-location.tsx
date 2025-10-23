@@ -17,7 +17,7 @@ export function VenueLocation({
 }: VenueLocationProps) {
   return (
     <div className="relative w-full py-20 md:py-32 bg-cover bg-center mt-[80px]" style={{ 
-      backgroundImage: "url('/venue-bg.png')",
+      backgroundImage: "url('/venue-bg.jpg')",
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }}>

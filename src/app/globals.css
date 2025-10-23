@@ -119,6 +119,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -135,4 +138,23 @@
 
 .font-quicksand {
   font-family: 'Quicksand', sans-serif;
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+  visibility: hidden;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.fade-in-section.has-animated {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }

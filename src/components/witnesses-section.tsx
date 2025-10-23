@@ -17,7 +17,7 @@ interface WitnessesSectionProps {
 
 export function WitnessesSection({ title, subtitle, description, witnesses }: WitnessesSectionProps) {
   return (
-    <div className="w-full pt-10 md:pt-20 pb-0 md:pb-20  bg-white max-w-[936px]">
+    <div className="w-full m-auto pt-10 md:pt-20 pb-0 md:pb-20  bg-white max-w-[936px]">
       <div className="mx-auto text-center md:text-left px-4 lg:px-0">
         <div className=" mb-15">
           <h3 className="text-gray-600 font-quicksand text-xl mb-2 font-medium">
