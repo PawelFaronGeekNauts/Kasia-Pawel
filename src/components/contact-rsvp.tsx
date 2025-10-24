@@ -31,7 +31,7 @@ export function ContactRSVP({ message, bride, groom, imageUrl }: ContactRSVPProp
             </div>
           </div>
           <div className="w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0">
-            <h3 className="text-gray-600 font-quicksand text-2xl">
+            <h3 className="text-gray-600 font-quicksand text-3xl">
               Kontakt
             </h3>
             <h2 className="font-cinzel text-4xl md:text-[32px] font-semibold text-gray-800 mb-1 mt-4">

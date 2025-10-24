@@ -11,11 +11,27 @@ interface FAQSectionProps {
 const FAQ_DATA = [
   {
     question: "Gdzie będę spać po tym jak przetańczę całą noc? ",
-    answer: "Na miejscu dostępne są przytulne pokoje, więc nie musicie się martwić o powrót do domu. W opcji rezerwacji dostępne jest również dla Was śniadanie. \n Aby z takiej możliwości skorzystać zadzwoń pod numer telefonu 795 000 054 i zarezerwuj dla siebie pokój "
+    answer: "Na miejscu czekają na Was przytulne pokoje, a w opcji rezerwacji dostępne jest także śniadanie. Pokoje są na koszt gości, dlatego prosimy o wcześniejszą rezerwację pod numerem 795 000 054."
   },
   {
     question: "Drogie panie co z butami? ",
     answer: "Wiemy że szpilki to must have każdej eleganckiej stylizacji. ALE nasza lokalizacja ślubna jest otoczona pięknymi terenami zielonymi.\nDlatego gorąco zachęcamy do zabrania wygodnych butów na zmianę. W końcu wygoda to podstawa dobrej zabawy!"
+  },
+  {
+    question: "Jak się ubrać?",
+    answer: "Byle nie na biało – to kolor Panny Młodej 🤍"
+  },
+  {
+    question: "Czy dzieci są zaproszone?",
+    answer: "Tym razem świętujemy tylko w gronie dorosłych."
+  },
+  {
+    question: "Czy wolicie kwiaty, wino, książki, losy lotto…?",
+    answer: "Wasza obecność to dla nas największy prezent! Jeśli jednak chcielibyście nas dodatkowo obdarować, zamiast kwiatów ucieszą nas zdrapki Lotto, a zamiast prezentów – drobne wsparcie w kopercie."
+  },
+  {
+    question: "Do kiedy trzeba potwierdzić obecność?",
+    answer: "Prosimy o potwierdzenie obecności do 16.05.2026"
   }
 ]
 

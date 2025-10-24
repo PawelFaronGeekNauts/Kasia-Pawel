@@ -85,12 +85,10 @@ export function Homepage() {
   const witnesses = [
     {
       name: "AGATA",
-      phone: "+48 123 456 789",
       imageUrl: "/agaten.jpg"
     },
     {
       name: "PAWEŁ",
-      phone: "+48 123 456 789",
       imageUrl: "/malina.jpg"
     }
   ];
@@ -108,7 +106,7 @@ export function Homepage() {
         className={`px-6 lg:px-0 w-full justify-center items-center max-w-[936px] fade-in-section ${hasVideoAnimated ? 'is-visible has-animated' : ''}`}
       >
         <YouTubeVideo 
-          videoId="dQw4w9WgXcQ" 
+          videoId="B2J6pImYuJ0" 
           title="Nasze zaręczyny"
         />
       </div>
@@ -137,7 +135,7 @@ export function Homepage() {
             name: "PAWEŁ",
             phone: "+48 792 413 904"
           }}
-          imageUrl="/couple.jpg"
+          imageUrl="/nasze.jpg"
         />
       </div>
       <div 
