@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 interface WitnessInfo {
   name: string;
-  phone: string;
   imageUrl: string;
 }
 
